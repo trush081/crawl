@@ -1540,6 +1540,12 @@ translocations. The spell's effectiveness is greatly diminished in closed
 areas. After the tornado fades, it cannot be called forth again for a short
 time.
 %%%%
+Transdimensional Blitz spell
+
+Launches melee attacks against multiple visible enemies, tearing a myriad of
+tiny portals in the air which briefly transport and duplicate the caster's
+blows. The number of portals opened increases at high power.
+%%%%
 Trog's Hand spell
 
 <Trog's Hand ability>

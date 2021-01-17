@@ -3353,6 +3353,7 @@ static const struct spell_desc spelldata[] =
 },
 
 {
+<<<<<<< HEAD
     SPELL_SUMMON_TZITZIMITL, "Summon Tzitzimitl",
     spschool::summoning | spschool::necromancy,
     spflag::monster | spflag::mons_abjure,
@@ -3383,6 +3384,17 @@ static const struct spell_desc spelldata[] =
     -1, -1,
     4, 0,
     TILEG_ANIMATE_ARMOUR,
+},
+
+{
+    SPELL_PROJECTED_WEAPON, "Transdimensional Blitz",
+    spschool::translocation | spschool::air,
+    spflag::no_ghost,
+    4,
+    100,
+    -1, -1,
+    5, 0,
+    TILEG_ERROR,
 },
 
 {

@@ -2260,6 +2260,9 @@ static spret _do_cast(spell_type spell, int powc, const dist& spd,
     case SPELL_DISJUNCTION:
         return cast_disjunction(powc, fail);
 
+    case SPELL_PROJECTED_WEAPON:
+        return cast_projected_weapon(powc, fail);
+
     case SPELL_CORPSE_ROT:
         return cast_corpse_rot(fail);
 

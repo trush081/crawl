@@ -1044,6 +1044,56 @@ spret cast_portal_projectile(int pow, bool fail)
     return spret::success;
 }
 
+spret cast_projected_weapon(int pow, bool fail, bool real)
+{
+    vector<monster*> targets;
+    for (monster_near_iterator mi(&you, LOS_NO_TRANS); mi; ++mi)
+    {
+        if (mi->wont_attack() || mi->neutral())
+            continue; // this should be enough to avoid penance?
+        if (!you.can_see(**mi))
+            continue;
+        targets.emplace_back(*mi);
+    }
+
+    if (targets.empty())
+    {
+        if (real)
+            mpr("You can't see anything to attack.");
+        return spret::abort;
+    }
+
+    if (!real)
+        return spret::success;
+
+    if (!wielded_weapon_check(you.weapon()))
+        return spret::abort;
+
+    fail_check();
+
+    if (targets.size() < 2)
+        mpr("A portal rends the air!");
+    else
+        mpr("A myriad of tiny portals rend the air!");
+
+    shuffle_array(targets);
+    const size_t max_targets = 2 + div_rand_round(pow, 50);
+    for (size_t i = 0; i < max_targets && i < targets.size(); i++)
+    {
+        // manually apply noise
+        behaviour_event(targets[i], ME_ALERT, &you, you.pos()); // shout + set you as foe
+
+        melee_attack atk(&you, targets[i]);
+        atk.is_projected = true;
+        atk.attack();
+
+        if (you.hp <= 0 || you.pending_revival)
+            break;
+    }
+
+    return spret::success;
+}
+
 spret cast_apportation(int pow, bolt& beam, bool fail)
 {
     const coord_def where = beam.target;
