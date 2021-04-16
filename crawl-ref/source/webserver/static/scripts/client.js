@@ -40,8 +40,11 @@ function (exports, $, key_conversion, chat, comm) {
 
     function handle_message(msg)
     {
+        var audio = new Audio("http://commondatastorage.googleapis.com/codeskulptor-assets/Collision8-Bit.ogg");
+        audio.play();
         if (typeof msg === "string")
         {
+
             // Javascript code
             eval(msg);
         }
