@@ -44,8 +44,7 @@ function (exports, $, key_conversion, chat, comm) {
         {
 
             // Javascript code
-            console.log(msg);
-	    eval(msg);
+            eval(msg);
         }
         else
         {
@@ -63,25 +62,20 @@ function (exports, $, key_conversion, chat, comm) {
 	for(i=0; i < msg.messages.length; i++){
                 //play sound for killing a monster
                if( msg.messages[i].text.includes("accepts your kill") || msg.messages[i].text.includes("You kill")){
- 	              console.log("Kill detected");
-                      var audio = new Audio("http://commondatastorage.googleapis.com/codeskulptor-assets/Collision8-Bit.ogg");
+ 	              var audio = new Audio("http://commondatastorage.googleapis.com/codeskulptor-assets/Collision8-Bit.ogg");
                       audio.play();
                } 
                //play sound for dying
               if( msg.messages[i].text.includes("You die")){
-        	      //insert death sound
-		      console.log("You died");
-		      var audio = new Audio("http://commondatastorage.googleapis.com/codeskulptor-demos/pyman_assets/theygotcha.ogg");
+        	      var audio = new Audio("http://commondatastorage.googleapis.com/codeskulptor-demos/pyman_assets/theygotcha.ogg");
 		      audio.play();
                }
                //play sound for low hitpoints
               if( msg.messages[i].text.includes("LOW HITPOINT WARNING")){
-              		//insert low hit point sound
-                        console.log("low warning");
-			var audio = new Audio("http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/alien_hit.wav");
-		        audio.play();
-		        audio.play();
-		        audio.play();
+                      var audio = new Audio("http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/alien_hit.wav");
+		      audio.play();
+		      audio.play();
+		      audio.play();
                }
         }
 
